@@ -4,23 +4,23 @@ import FormInput from './components/FormInput';
 
 function App() {
   // const [username, setUsername] = useState("");
-  const usernameRef = useRef();
+  // const usernameRef = useRef();
 
   console.log("re-rendered");
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    console.log(usernameRef);
+    const data = new FormData(e.target);
+    console.log(Object.fromEntries(data.entries()));
   }
 
-  console.log(usernameRef);
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
-        <FormInput placeholder="Username" refer={usernameRef} />
-        <FormInput placeholder="Email" />
-        <FormInput placeholder="Full Name" />
-        <FormInput placeholder="Something" />
+        <FormInput name="username" placeholder="Username" />
+        <FormInput name="email" placeholder="Email" />
+        <FormInput name="fullname" placeholder="Full Name" />
+        <FormInput name="something" placeholder="Something" />
         <button>Submit</button>
       </form>
     </div>
